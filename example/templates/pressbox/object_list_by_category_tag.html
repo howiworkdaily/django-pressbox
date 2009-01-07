@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load press_items %}
+
+{% block title %} - Template Tag view{% endblock %}
+
+{% block content %}
+
+{% get_category_press_items "press-release" as category %}
+
+<h2>Press Release</h2>
+<ul>
+{% for item in category.press_items.all %}
+<li><a href="{{ item.get_absolute_url }}" title="{{ item.title }}">{{ item.title }} - ({{ item.published_on|date:_("m/d/y") }})</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

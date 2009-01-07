@@ -1,0 +1,14 @@
+
+{% regroup objects by title as category_list %}
+{% for category in category_list %}
+<div class="press-category">
+  <h4>{{ category.grouper|upper }}</h4>
+  <p>
+  {% for category_item in category.list %}
+    {% for object in category_item.press_items.active %}
+    <a href="{{ object.get_absolute_url }}">{{ object.title|upper }} ({{ object.published_on|date:_("m/d/y") }})</a><br />
+    {% endfor %}
+  {% endfor %}
+  </p>
+</div>
+{% endfor %}

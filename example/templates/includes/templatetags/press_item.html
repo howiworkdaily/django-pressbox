@@ -1,0 +1,27 @@
+
+<div>
+	
+	<h3><a href="{{ object.get_absolute_url }}" title="{{ object.title }}">{{ object.title }}</a><span class="pubon">Published on: {{ object.published_on|date:"M d, Y" }}</span></h3>
+	
+	<h4>Short Description</h4>
+	<p>{{ object.short_description }}</p>
+
+	<h4>Body</h4>	
+	<p>{{ object.body|safe }}</p>
+	
+	<h4>Download File</h4>
+	{% if object.download_file %}
+	<a href="{{ object.download_file.url }}" title="{% if object.download_title %}{{ object.download_title }}{% endif %}">{% if object.download_title %}{{ object.download_title }}{% else %}Download file{% endif %}</a>
+	{% else %}
+	<p>Sorry, nothing to download.</p>
+	{% endif %}
+	
+	<h4>Related Images</h4>
+	{% ifequal object.images None %}
+   	     {% for pressimage in object.images.all %}
+	     <img alt="{% if pressimage.alt_text %}{{  pressimage.alt_text }}{% endif %}" src="{{ pressimage.image.url }}" widt="{{ pressimage.image.width }}" height="{{ pressimage.image.height }}"/>
+	     {% endfor %}
+    {% else %}
+         <span>None</span>
+    {% endifequal %}
+</div>

@@ -1,1 +1,52 @@
-nothing to see here yet
+Django-Pressbox
+=================
+
+This is a simple press item management application for your Django powered site.
+
+Many projects I develop need a "press" section for their site. So instead of reinventing the wheel each time I've selected the features most share and created this reusable Django app. I also provided basic example app to get you started.
+
+This app follows several "best practices" for reusable apps by allowing for template overrides and extra_context 
+arguments and such.
+
+Features
+===================
+
+I'll add more details later, but for now the features are basic:
+
+1. add press item(s).
+2. add press categories to structure the display of press items.
+3. add images to a press item. (I suggest using django-sorl to thumbnail images, etc)
+4. add a downloadedable file to a press item.
+5. allow both press categories and press items to honor manual sorting if set.
+6. allow users to set press items to active/inactive to control their display on the site. 
+7. a template tag to easily specify the specific press category (via slug) you'd like to display and then iterate through associated press items.
+
+Installation
+============
+
+1. add 'pressbox' directory to your Python path.
+2. add 'pressbox' to your INSTALLED_APPS tuple found in your settings file.
+3. If you want to customize the templates then either create an 'faq'
+   directory in your projects templates location, or you can also pass along
+   custom 'template_name' arguments by creating your own view wrappers around
+   the 'faq' app views. I show how to do the latter in the 'example' project
+   included - look at the views.py file to see the details.
+4. If you'd like to load some example data then execute ./manage.py loaddata example_data.json
+
+Example Site
+============
+
+I included an example site in the /example directory. You should be able to
+simply execute './manage.py syncdb' and then './manage.py runserver' and have
+the example site up and running. I assume your system has sqlite3 available -
+it is set as the default database with the DATABASE_NAME = 'pressbox.db'
+
+1. From the repository root directory execute "cd example" to jump into the example dir.
+
+2. Execute './manage.py syncdb' (This assumes that sqlite3 is available as it is set as the default database with th DATABASE_NAME = 'pressbox.db'.)
+
+3. Executing ./manage.py syncdb will load initial data for you, making use of the initial_data.json file found in the root of the example project directory.
+
+4. Execute './manage.py runserver' and you will have the example site up and running. The home page will have links to get to the available views.
+
+5. The admin is available at "/admin". Feel free to play around with it!
