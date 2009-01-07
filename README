@@ -26,12 +26,9 @@ Installation
 
 1. add 'pressbox' directory to your Python path.
 2. add 'pressbox' to your INSTALLED_APPS tuple found in your settings file.
-3. If you want to customize the templates then either create an 'faq'
-   directory in your projects templates location, or you can also pass along
-   custom 'template_name' arguments by creating your own view wrappers around
-   the 'faq' app views. I show how to do the latter in the 'example' project
-   included - look at the views.py file to see the details.
-4. If you'd like to load some example data then execute ./manage.py loaddata example_data.json
+3. execute ./manage.py syncdb to created database tables
+4. Log into your admin and enjoy!
+5. To customize the templates add a "pressbox" directory to your project's templates dir.
 
 Example Site
 ============
